@@ -81,7 +81,7 @@ input {
 }
 
 .photo-card {
-  flex-basis: calc((100% - 60px) / 4);
+  width: calc((100% - 60px) / 4);
 }
 
 .gallery img {
@@ -132,8 +132,7 @@ input {
 
   transition: transform var(--animation-duration) var(--timing-function);
 
-  &:hover,
-  &:focus {
+  &:hover {
     border: 1px solid rgb(38, 2, 103);
     color: rgb(38, 2, 103);
     outline: 0;

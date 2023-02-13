@@ -66,16 +66,8 @@ function renderCards(searchResult) {
   }
 
   createMarkup(searchResult);
-  const { height: cardHeight } = document
-    .querySelector('.gallery')
-    .firstElementChild.getBoundingClientRect();
-
-  window.scrollBy({
-    top: cardHeight * 2,
-    behavior: 'smooth',
-  });
-
   loadBtnControl(totalPages);
+  smoothScroll();
 
   return new SimpleLightbox('.gallery a');
 }
@@ -130,6 +122,16 @@ function loadBtnControl(totalPages) {
 
 function loadMore() {
   page += 1;
-
   getPictures(itemToSearch).then(renderCards).refresh;
+}
+
+function smoothScroll() {
+  const { height: cardHeight } = document
+    .querySelector('.gallery')
+    .firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
 }
