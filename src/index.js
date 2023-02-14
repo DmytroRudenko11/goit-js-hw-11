@@ -67,7 +67,6 @@ function renderCards(searchResult) {
 
   createMarkup(searchResult);
   loadBtnControl(totalPages);
-  smoothScroll();
 
   return new SimpleLightbox('.gallery a');
 }
@@ -122,13 +121,13 @@ function loadBtnControl(totalPages) {
 
 function loadMore() {
   page += 1;
-  getPictures(itemToSearch).then(renderCards).refresh;
+  getPictures(itemToSearch).then(renderCards).then(smoothScroll).refresh;
 }
 
 function smoothScroll() {
-  const { height: cardHeight } = document
-    .querySelector('.gallery')
-    .firstElementChild.getBoundingClientRect();
+  const { height: cardHeight } =
+    gallery.firstElementChild.getBoundingClientRect();
+  console.log(cardHeight);
 
   window.scrollBy({
     top: cardHeight * 2,
